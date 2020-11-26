@@ -1,7 +1,6 @@
 import { Request, Response } from 'express'
 import { Link } from '../models/link';
 import linksRepository from '../models/linksRepository';
-import linkRepository from '../models/linksRepository';
 
 function generateCode(){
     let text = '';
