@@ -75,7 +75,7 @@ class HomePage extends React.Component{
                                             <Button variant="outline-secondary" onClick={()=> this.copyToCpliboard()}>Copiar</Button>
                                         </InputGroup.Append>
                                     </InputGroup>
-                                    <p>Para acompanhar as estatísticas, acesse {vars.APP_HOST + code}/stats</p>
+                                    <p>Para acompanhar as estatísticas, acesse <a href={`${vars.APP_HOST + code}/stats`}>{vars.APP_HOST + code}/stats</a></p>
                                 </>
                             )
                         )}
