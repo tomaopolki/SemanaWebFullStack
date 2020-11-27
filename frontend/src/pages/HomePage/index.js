@@ -67,14 +67,14 @@ class HomePage extends React.Component{
                                     <InputGroup className="mb-3">
                                         <FormControl
                                             autoFocus= { true}
-                                            defaultValue={`https://ziggy.tk/${code}`}
+                                            defaultValue={`https://ziguen.tk/${code}`}
                                             ref={(input) => this.inputURL = input}
                                         />
                                         <InputGroup.Append>
                                             <Button variant="outline-secondary" onClick={()=> this.copyToCpliboard()}>Copiar</Button>
                                         </InputGroup.Append>
                                     </InputGroup>
-                                    <p>Para acompanhar as estatísticas, acesse https://ziggy.tk/{code}/stats</p>
+                                    <p>Para acompanhar as estatísticas, acesse https://ziguen.tk/{code}/stats</p>
                                 </>
                             )
                         )}
