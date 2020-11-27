@@ -3,6 +3,7 @@ import Header from '../../components/Header';
 import { Container, InputGroup, FormControl, Button, Alert, Spinner} from 'react-bootstrap';
 import { ContentContainer, Form, AdsBlock } from './styles';
 import ShortenerService from '../../services/shortenerService';
+import vars from '../../configs/vars';
 
 class HomePage extends React.Component{
     constructor(props) {
@@ -67,14 +68,14 @@ class HomePage extends React.Component{
                                     <InputGroup className="mb-3">
                                         <FormControl
                                             autoFocus= { true}
-                                            defaultValue={`https://ziguen.tk/${code}`}
+                                            defaultValue={vars.APP_HOST + code}
                                             ref={(input) => this.inputURL = input}
                                         />
                                         <InputGroup.Append>
                                             <Button variant="outline-secondary" onClick={()=> this.copyToCpliboard()}>Copiar</Button>
                                         </InputGroup.Append>
                                     </InputGroup>
-                                    <p>Para acompanhar as estatísticas, acesse https://ziguen.tk/{code}/stats</p>
+                                    <p>Para acompanhar as estatísticas, acesse {vars.APP_HOST + code}/stats</p>
                                 </>
                             )
                         )}
