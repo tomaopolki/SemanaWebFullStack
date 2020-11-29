@@ -1,6 +1,7 @@
 import { Request, Response } from 'express'
 import { Link } from '../models/link';
 import linksRepository from '../models/linksRepository';
+import checkLinkIsValid from '../util/checkLinkIsValid';
 
 function generateCode(){
     let text = '';
@@ -13,6 +14,19 @@ function generateCode(){
 
 async function postLink(req: Request, res: Response){
     const link = req.body as Link;
+
+    if (!(link && link.url))
+      return res.status(400).json({ message: 'Invalid link' });
+
+    if (link.url.substring(0, 4) !== 'http') {
+      link.url = `http://${link.url}`;
+    }
+
+    const validLink = await checkLinkIsValid(link.url);
+
+    if (!validLink)
+      return res.status(400).json({ message: 'Invalid link' });
+
     link.code = generateCode();
     link.hits = 0;
     const result = await linksRepository.add(link);
@@ -28,7 +42,7 @@ async function getLink(req: Request, res: Response){
     const link = await linksRepository.findByCode(code);
     if(!link)
         res.sendStatus(404);
-    else    
+    else   
         res.json(link);
 }
 
