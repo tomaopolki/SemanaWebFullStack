@@ -16,7 +16,7 @@ async function postLink(req: Request, res: Response){
     const link = req.body as Link;
 
     if (!(link && link.url))
-      return res.status(400).json({ message: 'Invalid link' });
+      return res.status(400).json({ message: 'Link inválido' });
 
     if (link.url.substring(0, 4) !== 'http') {
       link.url = `http://${link.url}`;
@@ -25,7 +25,7 @@ async function postLink(req: Request, res: Response){
     const validLink = await checkLinkIsValid(link.url);
 
     if (!validLink)
-      return res.status(400).json({ message: 'Invalid link' });
+      return res.status(400).json({ message: 'Link inválido' });
 
     link.code = generateCode();
     link.hits = 0;
